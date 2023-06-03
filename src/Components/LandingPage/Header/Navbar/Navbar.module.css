@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+.sugarLogo{
+    width: 250px;
+    height: 120px;
+}
+
+.formSearch{
+    margin-right: 100px;
+    display: flex;
+    text-align: center;
+    font: bold 13px sans-serif;
+     /* max-width: 70%; */
+    /* position: relative; */
+}
+
+.formSearch input{
+    width: 450px;
+    box-sizing: border-box;
+    background-color:  #ffffff;
+    padding: 14px 15px 14px 40px;
+    border: 1px solid #b6c3cd;;
+    border-right: 0;
+    color:#4E565C;
+    font-size: 22px;
+}
+
+.formSearch button{
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    background-color:  #f5f5f5;
+    color: #000000;
+    padding: 15px 22px;
+    margin-left: -4px;
+    cursor: pointer;
+    font-size: 22px;
+}
+

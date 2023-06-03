@@ -1,0 +1,8 @@
+.cards{
+    display: flex;
+    height: 50px;
+}
+.sliderImage{
+    width: 100%;
+    background-position: center;
+}
