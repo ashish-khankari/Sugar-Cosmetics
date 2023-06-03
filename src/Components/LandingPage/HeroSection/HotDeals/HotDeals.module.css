@@ -1,0 +1,15 @@
+.cardss{
+    margin-top: 100px;
+    gap: 25px;
+}
+
+.card{
+    margin: 50px;
+}
+
+.images{
+    width: 400px;
+    margin-left: 10px;
+    border-radius: 25px;
+    height: 260px;
+}
