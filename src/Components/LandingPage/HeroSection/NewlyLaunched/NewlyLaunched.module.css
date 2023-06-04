@@ -1,0 +1,19 @@
+
+.productImages{
+    margin-top: 60px;
+}
+.images{
+    width: 90%;
+    margin-left: 10px;
+    border-radius: 25px;
+    height: 290px;
+    margin-left: 70px;
+}
+
+.heading{
+    display: flex;
+}
+
+.text{
+    font-family: Arial, Helvetica, sans-serif;
+}
