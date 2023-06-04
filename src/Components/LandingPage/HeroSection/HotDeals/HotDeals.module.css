@@ -1,15 +1,20 @@
-.cardss{
-    margin-top: 100px;
-    gap: 25px;
-}
 
-.card{
-    margin: 50px;
+.productImages{
+    margin-top: 60px;
 }
-
 .images{
     width: 400px;
     margin-left: 10px;
     border-radius: 25px;
     height: 260px;
+    margin-left: 30px;
+}
+
+.heading{
+    display: flex;
+
+}
+
+.text{
+    font-family: Arial, Helvetica, sans-serif;
 }
