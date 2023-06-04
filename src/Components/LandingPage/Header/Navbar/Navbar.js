@@ -13,11 +13,11 @@ export default function Navbar() {
 
 
 
-      <form className={styles.formSearch}>
+      {/* <form className={styles.formSearch}>
         <input type="search" name="search" placeholder="Search Here..." />
         <button type="submit">Search</button>
 
-      </form>
+      </form> */}
 
       <div className={styles.user}>
         Hi Sugar Fan

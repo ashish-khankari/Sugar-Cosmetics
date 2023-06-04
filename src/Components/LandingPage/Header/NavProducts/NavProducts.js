@@ -8,7 +8,7 @@ export default function NavProducts() {
       
             {
                 navElements.map((item)=>(
-                    <ul>
+                    <ul className={styles.lists}>
                         <li className={styles.list}>{item}</li>
                     </ul>
                 ))
