@@ -11,14 +11,6 @@ export default function Navbar() {
         <img src='https://entrackr.com/storage/2022/03/Sugar.jpg' className={styles.sugarLogo} alt='logo' />
       </div>
 
-
-
-      {/* <form className={styles.formSearch}>
-        <input type="search" name="search" placeholder="Search Here..." />
-        <button type="submit">Search</button>
-
-      </form> */}
-
       <div className={styles.user}>
         Hi Sugar Fan
       </div>

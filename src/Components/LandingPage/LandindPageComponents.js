@@ -13,8 +13,7 @@ import JustIn from './HeroSection/JustIn/JustIn'
 export default function LandindPageComponents() {
   return (
     <div>
-        <Navbar/>
-        <NavProducts/>
+        
         <CardCarousal1/>
         <BestSeller/>
         <HotDeals/>
