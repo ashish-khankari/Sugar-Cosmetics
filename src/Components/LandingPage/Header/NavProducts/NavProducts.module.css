@@ -1,16 +1,26 @@
 .container {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap onto new line */
     background-color: rgb(33, 32, 32);
     color: white;
     align-items: center;
-    
-}
-
-.list {
+    justify-content: space-evenly;
+  }
+  
+  .lists {
+    display: flex;
+    align-items: center;
+    gap: 80px;
     list-style: none;
+  }
+  
+  .list {
     cursor: pointer;
-    margin-left: -8px;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 10px;
-}
+    text-decoration: none;
+  }
+  
+  .elements {
+    color: white;
+  }
+  

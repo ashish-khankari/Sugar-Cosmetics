@@ -1,21 +1,21 @@
 import React from 'react'
 import styles from './NavProducts.module.css'
+import { Link } from 'react-router-dom'
 
 export default function NavProducts() {
-    const navElements = ["LIPS","EYES","FACE", "NAILS", "SKINCARE","ACCESSORIES", "GIFTS & KITS","BESTSELLERS"," NEW LAUNCHES","OFFERS","BLOG","STORES"]
+  const navElements = ["LIPS","EYES","FACE", "SKINCARE","OFFERS","BLOG","STORES", "BRUSHES"]
+  
   return (
     <div className={styles.container}>
-      
-            {
-                navElements.map((item)=>(
-                    <ul className={styles.lists}>
-                        <li className={styles.list}>{item}</li>
-                    </ul>
-                ))
-            }
-            <ul>
-                
-            </ul>
+      <ul className={styles.lists}>
+        {navElements.map((navElement, index) => (
+          <li key={index} className={styles.list}>
+            <Link className={styles.link} to={`/${navElement.toLowerCase()}`}>
+             <p className={styles.elements}>{navElement}</p> 
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
