@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBlushData } from '../../../store/slices/productSlice'
+import { addtoCart, getBlushData } from '../../../store/slices/productSlice'
 import styles from './Brushes.module.css'
 
 
@@ -11,6 +11,13 @@ export default function Brushes() {
   useEffect(() => {
     dispatch(getBlushData())
   }, [])
+  
+
+  const addProducttoCart=(product)=>{
+    dispatch(addtoCart(product))
+  }
+
+
   return (
     <div className={styles.products}>
       {blushProducts.map((product) => (
@@ -18,7 +25,7 @@ export default function Brushes() {
           <img className={styles.lipsImage} src={product.image_link} />
           <p key={product.id} className={styles.productName}>{product.name}</p>
 
-          <button className={styles.lipsButton}>Add to Cart</button>
+          <button className={styles.lipsButton} onClick={()=>addProducttoCart(product)}>Add to Cart</button>
         </div>
       ))}
     </div>
