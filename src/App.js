@@ -10,6 +10,7 @@ import Brushes from "./Components/Section/Brushes/Brushes";
 import Stories from "./Components/Section/Stories/Stories";
 import Navbar from './Components/LandingPage/Header/Navbar/Navbar';
 import NavProducts from './Components/LandingPage/Header/NavProducts/NavProducts';
+import Cart from "./Components/LandingPage/Header/Navbar/Cart/Cart";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/eyes" element={<Eyes />} />
         <Route path="/brushes" element={<Brushes />} />
         <Route path="/stories" element={<Stories />} />
+        <Route path="/cart" element={<Cart/>}/>
 
       </Routes>
 
