@@ -10,7 +10,16 @@
     width: 250px;
     height: 120px;
 }
+.icons{
+    margin-right: 50px;
+}
 
+.icon{
+    margin-left: 25px;
+    height: 26px;
+    width: 26px;
+    cursor: pointer;
+}
 .formSearch{
     margin-right: 100px;
     display: flex;
