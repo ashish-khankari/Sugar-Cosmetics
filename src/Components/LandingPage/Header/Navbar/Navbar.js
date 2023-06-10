@@ -17,7 +17,7 @@ export default function Navbar() {
         Hi Sugar Fan
       </div>
       <div className={styles.icons}>
-        <AiOutlineHeart className={styles.icon} />
+        <Link to={'/bookmark'}> <AiOutlineHeart className={styles.icon} /></Link>
         <Link to={'/cart'}><BiStoreAlt className={styles.icon} /></Link>
         <CiDiscount1 className={styles.icon} />
       </div>
