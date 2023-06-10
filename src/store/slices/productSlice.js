@@ -1,18 +1,18 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-export const getLipsData = createAsyncThunk("lipsData",async ()=>{
+export const getLipsData = createAsyncThunk("lipsData", async () => {
     const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_category=lipstick&product_type=lipstick");
     const lipsdata = response.json();
     return lipsdata
 })
 
-export const getEyesData = createAsyncThunk("eyesData", async()=> {
+export const getEyesData = createAsyncThunk("eyesData", async () => {
     const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyebrow")
     const eyesData = response.json()
     return eyesData
 })
 
-export const getBlushData = createAsyncThunk( "brushesData", async()=>{
+export const getBlushData = createAsyncThunk("brushesData", async () => {
     const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush")
     const blushData = response.json()
     return blushData
@@ -21,68 +21,75 @@ export const getBlushData = createAsyncThunk( "brushesData", async()=>{
 
 const productSlice = createSlice({
     name: "products",
-    initialState:{
-            products:[],
-            eyesProduct:[],
-            blushProduct:[],
-            value: 0,
-            loading: false,
-            error: null
+    initialState: {
+        products: [],
+        eyesProduct: [],
+        blushProduct: [],
+        cartProducts: JSON.parse(localStorage.getItem("cartProducts") ) || [],
+        value: 0,
+        loading: false,
+        error: null
     },
-    reducers:{
-        addtoCart:(state, action)=>{
+    reducers: {
+        addtoCart: (state, action) => {
+            // console.log(action)
+            // console.log(action.payload)
+            state.cartProducts.push(action.payload)
+            localStorage.setItem("cartProducts", JSON.stringify((state.cartProducts)))
 
         },
-        removefromCart:(state, action)=>{
+        removefromCart: (state, action) => {
+        //    console.log(action.payload)
+           state.cartProducts = state.cartProducts.filter((item)=>item.id!== action.payload.id)
+            
+        },
+        incrementCartCount: (state, action) => {
 
         },
-        incrementCartCount:(state, action)=>{
+        decrementCartCount: (state, action) => {
 
         },
-        decrementCartCount:(state, action)=>{
+        addtoFavourites: (state, action) => {
 
         },
-        addtoFavourites:(state, action)=>{
-
-        }, 
-        removefromFavourites:(state, action)=>{
+        removefromFavourites: (state, action) => {
 
         }
     },
-    extraReducers:{
+    extraReducers: {
 
         //extrareducer for lipsData
-        [getLipsData.pending]: (state)=>{
-            state.loading= true;
+        [getLipsData.pending]: (state) => {
+            state.loading = true;
 
         },
-        [getLipsData.fulfilled]: (state, action)=>{
+        [getLipsData.fulfilled]: (state, action) => {
             state.products = action.payload
         },
-        [getLipsData.rejected]: (state, action)=>{
-            state.loading= false;
+        [getLipsData.rejected]: (state, action) => {
+            state.loading = false;
             state.error = action.payload
         },
 
         //extrareducer for eyesData
-        [getEyesData.pending]:(state)=>{
+        [getEyesData.pending]: (state) => {
             state.loading = true;
         },
-        [getEyesData.fulfilled]: (state, action)=>{
+        [getEyesData.fulfilled]: (state, action) => {
             state.eyesProduct = action.payload
         },
-        [getEyesData.rejected]:(state)=>{
+        [getEyesData.rejected]: (state) => {
             state.loading = true;
         },
 
         //extrareducer for blushData
-        [getBlushData.pending]:(state)=>{
-            state.loading=true;
+        [getBlushData.pending]: (state) => {
+            state.loading = true;
         },
-        [getBlushData.fulfilled]:(state, action)=>{
+        [getBlushData.fulfilled]: (state, action) => {
             state.blushProduct = action.payload
         },
-        [getBlushData.rejected]:(state)=>{
+        [getBlushData.rejected]: (state) => {
             state.rejected = true
         }
 
@@ -90,6 +97,6 @@ const productSlice = createSlice({
 
 })
 
-export const {addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites} = productSlice.actions
+export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites } = productSlice.actions
 
 export default productSlice.reducer
