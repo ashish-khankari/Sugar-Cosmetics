@@ -1,0 +1,30 @@
+.lipsProduct{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+}
+
+.lipsImage{
+    height: 80px;
+    width: 80px;
+    margin-left: -25px;
+    border-radius: 20px;
+}
+
+.deleteButton{
+    height: 25px;
+    cursor: pointer;
+    width: 25px;
+}
+
+.price{
+    font-size: 22px;
+}
+
+.productName{
+    font-size: 22px;
+}
