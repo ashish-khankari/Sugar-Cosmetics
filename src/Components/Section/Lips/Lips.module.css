@@ -1,9 +1,12 @@
+body{
+    background-color: aliceblue;
+}
+
 .lipsImage{
     height: 230px;
     border-radius: 20px;
     width: 200px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 .lipsProduct{
@@ -12,9 +15,15 @@
     align-items: center;
     justify-content: center;
     gap: 25px;
-    background-color: rgb(246, 246, 246);
+    background-color: white;
     width: 300px;
+    border-radius: 25px;
+    box-shadow:  0 3px 10px rgb(0 0 0 / 0.2);
+    
+}
 
+.titleImage{
+    width: 100vw;
 }
 
 .productName{
@@ -31,15 +40,23 @@
 }
 
 .lipsButton{
-    width: 100%;
+    width: 80%;
     height: 50px;
     font-size: 22px;
     border: none;
     color: white;
     background-color: black;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .lipsButton:hover{
     background-color: rgb(55, 55, 55);
+}
+
+.bookmarkSign{
+    margin-right: 240px;
+    margin-top: 25px;
+    font-size: 30px;
+    cursor: pointer;
 }
