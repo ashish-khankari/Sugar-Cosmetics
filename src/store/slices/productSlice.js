@@ -1,21 +1,27 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const getLipsData = createAsyncThunk("lipsData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_category=lipstick&product_type=lipstick");
+    const response = await fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline");
     const lipsdata = response.json();
     return lipsdata
 })
 
 export const getEyesData = createAsyncThunk("eyesData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyebrow")
+    const response = await fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=l'oreal")
     const eyesData = response.json()
     return eyesData
 })
 
 export const getBlushData = createAsyncThunk("brushesData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush")
+    const response = await fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl")
     const blushData = response.json()
     return blushData
+})
+
+export const getFoundationData = createAsyncThunk( "foundationData", async()=> {
+    const response = await fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=e.l.f.")
+    const foundationData = response.json()
+    return foundationData
 })
 
 
@@ -25,7 +31,9 @@ const productSlice = createSlice({
         products: [],
         eyesProduct: [],
         blushProduct: [],
-        cartProducts: JSON.parse(localStorage.getItem("cartProducts") ) || [],
+        foundationProducts:[],
+        cartProducts: JSON.parse(localStorage.getItem("cartProducts")) || [],
+        bookMarkedProducts: JSON.parse(localStorage.getItem("bookmarkedProduct")) || [],
         value: 0,
         loading: false,
         error: null
@@ -39,59 +47,74 @@ const productSlice = createSlice({
 
         },
         removefromCart: (state, action) => {
-        //    console.log(action.payload)
-           state.cartProducts = state.cartProducts.filter((item)=>item.id!== action.payload.id)
-            
+            //    console.log(action.payload)
+            state.cartProducts = state.cartProducts.filter((item) => item.id !== action.payload.id)
+            localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts))
         },
-        incrementCartCount: (state, action) => {
-
+        incrementCartCount: (state) => {
+            state.value = state.value + 1
         },
-        decrementCartCount: (state, action) => {
-
+        decrementCartCount: (state) => {
+            state.value = state.value - 1
         },
         addtoFavourites: (state, action) => {
-
+            // console.log(action.payload)
+            state.bookMarkedProducts.push(action.payload)
+            localStorage.setItem("bookmarkedProduct", JSON.stringify(state.bookMarkedProducts))
         },
         removefromFavourites: (state, action) => {
 
         }
     },
-    extraReducers: {
+
+    extraReducers: (builder) => {
 
         //extrareducer for lipsData
-        [getLipsData.pending]: (state) => {
+        builder.addCase(getLipsData.pending, (state) => {
             state.loading = true;
-
-        },
-        [getLipsData.fulfilled]: (state, action) => {
+        });
+        builder.addCase(getLipsData.fulfilled, (state, action) => {
             state.products = action.payload
-        },
-        [getLipsData.rejected]: (state, action) => {
+        });
+        builder.addCase(getLipsData.rejected, (state) => {
             state.loading = false;
-            state.error = action.payload
-        },
+        });
 
         //extrareducer for eyesData
-        [getEyesData.pending]: (state) => {
+        builder.addCase(getEyesData.pending, (state) => {
             state.loading = true;
-        },
-        [getEyesData.fulfilled]: (state, action) => {
+
+        });
+        builder.addCase(getEyesData.fulfilled, (state, action) => {
             state.eyesProduct = action.payload
-        },
-        [getEyesData.rejected]: (state) => {
-            state.loading = true;
-        },
+        });
+        builder.addCase(getEyesData.rejected, (state) => {
+            state.loading = false;
+        });
 
         //extrareducer for blushData
-        [getBlushData.pending]: (state) => {
+        builder.addCase(getBlushData.pending, (state) => {
             state.loading = true;
-        },
-        [getBlushData.fulfilled]: (state, action) => {
+
+        });
+        builder.addCase(getBlushData.fulfilled, (state, action) => {
             state.blushProduct = action.payload
-        },
-        [getBlushData.rejected]: (state) => {
-            state.rejected = true
-        }
+        });
+        builder.addCase(getBlushData.rejected, (state) => {
+            state.loading = false;
+        });
+
+        // extraReducer for foundationData
+        builder.addCase(getFoundationData.pending, (state)=>{
+            state.loading = true
+        });
+        builder.addCase(getFoundationData.fulfilled, (state, action)=>{
+            state.foundationProducts = action.payload
+
+        });
+        builder.addCase(getFoundationData.rejected, (state)=>{
+            state.loading = false;
+        })
 
     }
 
