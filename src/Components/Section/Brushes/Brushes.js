@@ -11,9 +11,9 @@ export default function Brushes() {
   useEffect(() => {
     dispatch(getBlushData())
   }, [])
-  
 
-  const addProducttoCart=(product)=>{
+
+  const addProducttoCart = (product) => {
     dispatch(addtoCart(product))
   }
 
@@ -23,9 +23,10 @@ export default function Brushes() {
       {blushProducts.map((product) => (
         <div className={styles.lipsProduct}>
           <img className={styles.lipsImage} src={product.image_link} />
-          <p key={product.id} className={styles.productName}>{product.name}</p>
-
-          <button className={styles.lipsButton} onClick={()=>addProducttoCart(product)}>Add to Cart</button>
+          <div className={styles.name}>
+            <p key={product.id} className={styles.productName}>{product.name}</p>
+          </div>
+          <button className={styles.lipsButton} onClick={() => addProducttoCart(product)}>Add to Cart</button>
         </div>
       ))}
     </div>

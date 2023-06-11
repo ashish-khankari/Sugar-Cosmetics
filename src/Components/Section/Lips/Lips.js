@@ -19,7 +19,7 @@ export default function Lips() {
     dispatch(addtoCart(product))
   }
 
-  function addedToBookmarkList(product){
+  function addedToBookmarkList(product) {
     // setbookmarkColor(!bookmarkColor)
     dispatch(addtoFavourites(product))
   }
@@ -27,13 +27,16 @@ export default function Lips() {
   return (
 
     <div className={styles.products}>
-      <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Lips.jpg' className={styles.titleImage}/>
+      <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Lips.jpg' className={styles.titleImage} />
       {lipsData.map((product) => (
 
         <div className={styles.lipsProduct}>
-          <div className={styles.bookmarkSign} onClick={()=>addedToBookmarkList(product)}><AiOutlineHeart /></div>
+          <div className={styles.bookmarkSign} onClick={() => addedToBookmarkList(product)}><AiOutlineHeart /></div>
           <img className={styles.lipsImage} src={product.image_link} />
-          <p key={product.id} className={styles.productName}>{product.name}</p>
+          <div className={styles.name}>
+            <p key={product.id} className={styles.productName}>{product.name}</p>
+          </div>
+
           <button className={styles.lipsButton} onClick={() => addProducttoCart(product)}>Add to Cart</button>
         </div>
       ))}

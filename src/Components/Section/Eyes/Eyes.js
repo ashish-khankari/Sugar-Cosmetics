@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styles from './Eyes.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { addtoCart, addtoFavourites, getEyesData } from '../../../store/slices/productSlice'
-import {AiOutlineHeart} from 'react-icons/ai'
+import { AiOutlineHeart } from 'react-icons/ai'
 
 
 export default function Eyes() {
@@ -11,12 +11,12 @@ export default function Eyes() {
   useEffect(() => {
     dispatch(getEyesData())
   }, [])
-  
-  const addProducttoCart = (product)=>{
+
+  const addProducttoCart = (product) => {
     dispatch(addtoCart(product))
   }
 
-  function addedToBookmarkList(product){
+  function addedToBookmarkList(product) {
     dispatch(addtoFavourites(product))
   }
 
@@ -25,11 +25,13 @@ export default function Eyes() {
       {
         eyesData.map((product) => (
           <div className={styles.lipsProduct}>
-            <div className={styles.bookmarkSign} onClick={()=>addedToBookmarkList(product)}><AiOutlineHeart /></div>
+            <div className={styles.bookmarkSign} onClick={() => addedToBookmarkList(product)}><AiOutlineHeart /></div>
             <img className={styles.lipsImage} src={product.image_link} />
-            <p key={product.id} className={styles.productName}>{product.name}</p>
+            <div className={styles.name}>
+              <p key={product.id} className={styles.productName}>{product.name}</p>
+            </div>
 
-            <button className={styles.lipsButton} onClick={()=>addProducttoCart(product)}>Add to Cart</button>
+            <button className={styles.lipsButton} onClick={() => addProducttoCart(product)}>Add to Cart</button>
           </div>
         ))
       }
