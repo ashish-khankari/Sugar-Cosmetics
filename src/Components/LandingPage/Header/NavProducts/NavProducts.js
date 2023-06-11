@@ -3,7 +3,7 @@ import styles from './NavProducts.module.css'
 import { Link } from 'react-router-dom'
 
 export default function NavProducts() {
-  const navElements = ["LIPS","EYES","FACE", "SKINCARE","OFFERS","BLOG","STORES", "BRUSHES"]
+  const navElements = ["LIPS","EYES","FOUNDATION", "SKINCARE", "BRUSHES","OFFERS","BLOG","STORES"]
   
   return (
     <div className={styles.container}>

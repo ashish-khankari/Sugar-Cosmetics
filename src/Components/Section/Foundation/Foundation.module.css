@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(237, 237, 237);
+    background-color: aliceblue;
 }
 
 .lipsImage{
@@ -7,7 +7,6 @@ body{
     border-radius: 20px;
     width: 200px;
     cursor: pointer;
-    
 }
 
 .lipsProduct{
