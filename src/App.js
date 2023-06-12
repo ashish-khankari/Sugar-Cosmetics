@@ -12,12 +12,16 @@ import Navbar from './Components/LandingPage/Header/Navbar/Navbar';
 import NavProducts from './Components/LandingPage/Header/NavProducts/NavProducts';
 import Cart from "./Components/LandingPage/Header/Navbar/Cart/Cart";
 import BookMark from "./Components/LandingPage/Header/Navbar/BookMark/BookMark";
+import Footer from "./Components/LandingPage/HeroSection/Footer/Footer";
 
 function App() {
   return (
     <div className="App">
+      <div style={{top:"0", position:"sticky", zIndex:"1"}}>
       <Navbar />
       <NavProducts />
+      </div>
+      
       <Routes>
         <Route path="/" element={<LandindPageComponents />} />
         <Route path="/blog" element={<Blog />} />
@@ -31,7 +35,7 @@ function App() {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/bookmark" element={<BookMark/>}/>
       </Routes>
-
+      <Footer/>
     </div>
   );
 }

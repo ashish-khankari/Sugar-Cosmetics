@@ -5,6 +5,8 @@
     color: white;
     align-items: center;
     justify-content: space-evenly;
+    top: 0;
+    position: sticky;
   }
   
   .lists {
