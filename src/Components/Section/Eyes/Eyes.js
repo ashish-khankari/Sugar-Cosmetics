@@ -8,12 +8,18 @@ import { AiOutlineHeart } from 'react-icons/ai'
 export default function Eyes() {
   const dispatch = useDispatch()
   const eyesData = useSelector(state => state.myProducts.eyesProduct)
+  const cartData = useSelector(state=>state.myProducts.cartProducts)
   useEffect(() => {
     dispatch(getEyesData())
   }, [])
 
   const addProducttoCart = (product) => {
-    dispatch(addtoCart(product))
+    if (cartData.find((item) => (item.id) === product.id)) {
+      alert("product already available")
+    } else {
+      dispatch(addtoCart(product))
+    }
+
   }
 
   function addedToBookmarkList(product) {

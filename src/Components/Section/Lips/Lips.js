@@ -8,15 +8,22 @@ import { AiOutlineHeart } from 'react-icons/ai'
 export default function Lips() {
   const dispatch = useDispatch()
   const lipsData = useSelector(state => state.myProducts.products)
+  const cartData = useSelector(state => state.myProducts.cartProducts)
 
-  const [bookmarkColor, setbookmarkColor] = useState(false)
+  // const [bookmarkColor, setbookmarkColor] = useState(false)
 
   useEffect(() => {
     dispatch(getLipsData())
   }, [])
 
   function addProducttoCart(product) {
-    dispatch(addtoCart(product))
+    // cartData.find((already)=>())
+    if (cartData.find((item) => (item.id) === product.id)) {
+      alert("product already available")
+    } else {
+      dispatch(addtoCart(product))
+    }
+
   }
 
   function addedToBookmarkList(product) {

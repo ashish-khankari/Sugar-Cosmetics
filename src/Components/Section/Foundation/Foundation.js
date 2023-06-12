@@ -7,12 +7,18 @@ import { AiOutlineHeart } from 'react-icons/ai'
 export default function Foundation() {
   const dispatch = useDispatch()
   const foundationData = useSelector(state => state.myProducts.foundationProducts)
+  const cartData = useSelector(state=>state.myProducts.cartProducts)
   useEffect(() => {
     dispatch(getFoundationData())
   }, [])
 
   function addProductToCart(product){
-    dispatch(addtoCart(product))
+    if (cartData.find((item) => (item.id) === product.id)) {
+      alert("product already available")
+    } else {
+      dispatch(addtoCart(product))
+    }
+
   }
 
   function addtoBookmarkSection(product){
