@@ -3,21 +3,37 @@ import styles from './Eyes.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { addtoCart, addtoFavourites, getEyesData } from '../../../store/slices/productSlice'
 import { AiOutlineHeart } from 'react-icons/ai'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Eyes() {
   const dispatch = useDispatch()
   const eyesData = useSelector(state => state.myProducts.eyesProduct)
   const cartData = useSelector(state=>state.myProducts.cartProducts)
+
+  const showToastMessageforError = () => {
+    toast.info('Product already addedto Cart !', {
+      position: toast.POSITION.TOP_RIGHT
+    });
+  };
+
+  const showToastMessageforSuccess = () => {
+    toast.success("Product succesfully added", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  }
+
   useEffect(() => {
     dispatch(getEyesData())
   }, [])
 
   const addProducttoCart = (product) => {
     if (cartData.find((item) => (item.id) === product.id)) {
-      alert("product already available")
+      showToastMessageforError()
     } else {
       dispatch(addtoCart(product))
+      showToastMessageforSuccess()
     }
 
   }
@@ -41,6 +57,7 @@ export default function Eyes() {
           </div>
         ))
       }
+      <ToastContainer/>
     </div>
   )
 }
