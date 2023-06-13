@@ -3,15 +3,13 @@
     flex-wrap: wrap;
     background-color: rgb(33, 32, 32);
     color: white;
-    align-items: center;
-    justify-content: space-evenly;
     top: 0;
     position: sticky;
+    height: 68px;
   }
   
   .lists {
     display: flex;
-    align-items: center;
     gap: 80px;
     list-style: none;
     flex-wrap: wrap;

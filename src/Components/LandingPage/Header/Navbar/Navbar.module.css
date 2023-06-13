@@ -10,10 +10,12 @@
     z-index: 999;
     height: 100px;
 }
+
 .sugarLogo{
-    width: 220px;
+    width: 200px;
     height: 90px;
 }
+
 .icons{
     margin-right: 50px;
 }
@@ -25,13 +27,12 @@
     cursor: pointer;
     color: white;
 }
+
 .formSearch{
     margin-right: 100px;
     display: flex;
     text-align: center;
     font: bold 13px sans-serif;
-     /* max-width: 70%; */
-    /* position: relative; */
 }
 
 .formSearch input{

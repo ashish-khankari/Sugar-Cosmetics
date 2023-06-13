@@ -13,6 +13,7 @@ import NavProducts from './Components/LandingPage/Header/NavProducts/NavProducts
 import Cart from "./Components/LandingPage/Header/Navbar/Cart/Cart";
 import BookMark from "./Components/LandingPage/Header/Navbar/BookMark/BookMark";
 import Footer from "./Components/LandingPage/HeroSection/Footer/Footer";
+import './App.css'
 
 function App() {
   return (
