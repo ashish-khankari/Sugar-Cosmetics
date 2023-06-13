@@ -3,11 +3,12 @@ import styles from './Cart.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrementCartCount, incrementCartCount, removefromCart } from '../../../../../store/slices/productSlice'
 import { RiDeleteBin6Line } from 'react-icons/ri'
-
+import { BsCurrencyDollar } from 'react-icons/bs'
 
 export default function Cart() {
   const fetchDataFromCart = useSelector(state => state.myProducts.cartProducts)
-  const cartTotal = useSelector(state => state.myProducts.value)
+  const cartValue = useSelector(state => state.myProducts.value)
+
   const dispath = useDispatch()
   // console.log(fetchDataFromCart)
 
@@ -15,12 +16,15 @@ export default function Cart() {
     dispath(removefromCart(product))
   }
 
-  function increamentValue() {
-    dispath(incrementCartCount())
+  function increamentValue(product) {
+
+    // const myData = cartDatas.forEach((item) => (item.id === product.id))
+    // console.log(myData)
+    dispath(incrementCartCount(product))
   }
 
-  function decreamentValue() {
-    dispath(decrementCartCount())
+  function decreamentValue(product) {
+    dispath(decrementCartCount(product))
   }
   return (
     <div className={styles.CartProducts}>
@@ -29,9 +33,10 @@ export default function Cart() {
           fetchDataFromCart.map((product) => (
             <div className={styles.lipsProduct}>
               <img className={styles.lipsImage} src={product.image_link} />
-              <p key={product.id} className={styles.productName}>{product.name}</p>
-              <p className={styles.price}>{product.price_sign + "" + product.price}</p>
-              <p><button onClick={increamentValue}>+</button> {cartTotal} <button onClick={decreamentValue}>-</button></p>
+              {/* <p key={product.id} className={styles.productName}>{product.name}</p> */}
+              <p className={styles.price}>{ "" + product.price}</p>
+
+              <p><button onClick={() => increamentValue(product)}>+</button>{cartValue}<button onClick={() => decreamentValue(product)}>-</button></p>
               <RiDeleteBin6Line className={styles.deleteButton} onClick={() => removeCartItem(product)} />
             </div>
           ))

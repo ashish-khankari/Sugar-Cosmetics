@@ -18,7 +18,7 @@ export const getBlushData = createAsyncThunk("brushesData", async () => {
     return blushData
 })
 
-export const getFoundationData = createAsyncThunk( "foundationData", async()=> {
+export const getFoundationData = createAsyncThunk("foundationData", async () => {
     const response = await fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=e.l.f.")
     const foundationData = response.json()
     return foundationData
@@ -31,9 +31,11 @@ const productSlice = createSlice({
         products: [],
         eyesProduct: [],
         blushProduct: [],
-        foundationProducts:[],
+        foundationProducts: [],
         cartProducts: JSON.parse(localStorage.getItem("cartProducts")) || [],
         bookMarkedProducts: JSON.parse(localStorage.getItem("bookmarkedProduct")) || [],
+        // cartData: [],
+        // cartDecrement:[],
         value: 0,
         loading: false,
         error: null
@@ -51,11 +53,19 @@ const productSlice = createSlice({
             state.cartProducts = state.cartProducts.filter((item) => item.id !== action.payload.id)
             localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts))
         },
-        incrementCartCount: (state) => {
-            state.value = state.value + 1
+        incrementCartCount: (state, action) => {
+
+
+            const product = state.cartProducts.find((item) => item.id === action.payload.id)
+            if(product){
+                product.quantity += 1;
+                state.value = state.value+1
+            }
+
         },
-        decrementCartCount: (state) => {
-            state.value = state.value - 1
+        decrementCartCount: (state, action) => {
+            // state.cartData.push(action.payload.id)
+            // console.log(action.payload.id)
         },
         addtoFavourites: (state, action) => {
             // console.log(action.payload)
@@ -105,14 +115,14 @@ const productSlice = createSlice({
         });
 
         // extraReducer for foundationData
-        builder.addCase(getFoundationData.pending, (state)=>{
+        builder.addCase(getFoundationData.pending, (state) => {
             state.loading = true
         });
-        builder.addCase(getFoundationData.fulfilled, (state, action)=>{
+        builder.addCase(getFoundationData.fulfilled, (state, action) => {
             state.foundationProducts = action.payload
 
         });
-        builder.addCase(getFoundationData.rejected, (state)=>{
+        builder.addCase(getFoundationData.rejected, (state) => {
             state.loading = false;
         })
 

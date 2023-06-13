@@ -24,14 +24,14 @@ function App() {
       
       <Routes>
         <Route path="/" element={<LandindPageComponents />} />
-        <Route path="/blog" element={<Blog />} />
+        {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/lips" element={<Lips />} />
-        <Route path="/skincare" element={<SkinCare />} />
+        {/* <Route path="/skincare" element={<SkinCare />} /> */}
         <Route path="/offers" element={<Offers />} />
         <Route path="/foundation" element={<Face />} />
-        <Route path="eyes" element ={<Eyes/>}/>
+        <Route path="/eyes" element ={<Eyes/>}/>
         <Route path="/brushes" element={<Brushes />} />
-        <Route path="/stories" element={<Stories />} />
+        {/* <Route path="/stories" element={<Stories />} /> */}
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/bookmark" element={<BookMark/>}/>
       </Routes>
