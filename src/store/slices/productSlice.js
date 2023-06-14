@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { v4 as uuidv4 } from 'uuid'
+
 
 export const getLipsData = createAsyncThunk("lipsData", async () => {
     const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline");
@@ -34,34 +36,46 @@ const productSlice = createSlice({
         foundationProducts: [],
         cartProducts: JSON.parse(localStorage.getItem("cartProducts")) || [],
         bookMarkedProducts: JSON.parse(localStorage.getItem("bookmarkedProduct")) || [],
-        value: 0,
         loading: false,
         error: null
     },
+
+
     reducers: {
         addtoCart: (state, action) => {
-            state.cartProducts.push(action.payload)
-            localStorage.setItem("cartProducts", JSON.stringify((state.cartProducts)))
-
+            const newItem = {
+                ...action.payload,
+                quantity: 1, // Initialize quantity to 1
+            };
+            state.cartProducts.push(newItem);
+            localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
         },
+
         removefromCart: (state, action) => {
             //    console.log(action.payload)
             state.cartProducts = state.cartProducts.filter((item) => item.id !== action.payload.id)
             localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts))
         },
         incrementCartCount: (state, action) => {
-
-
-            const product = state.cartProducts.find((item) => item.id === action.payload.id)
-            if(product){
+            const productId = action.payload.id;
+            // console.log(action.payload)
+            const product = state.cartProducts.find(item => item.id === productId);
+            if (product) {
                 product.quantity += 1;
-                state.value = state.value+1
+                localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
             }
-
         },
+
         decrementCartCount: (state, action) => {
-            // state.cartData.push(action.payload.id)
-            console.log(action.payload)
+            const productId = action.payload.id
+            // console.log(productId)
+            const product = state.cartProducts.find((item) => item.id === productId)
+            if (product.quantity>1) {
+                product.quantity -= 1
+                localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
+            }else{
+                state.cartProducts = state.cartProducts.filter((item) => item.id !== productId)    
+            }
         },
         addtoFavourites: (state, action) => {
             // console.log(action.payload)

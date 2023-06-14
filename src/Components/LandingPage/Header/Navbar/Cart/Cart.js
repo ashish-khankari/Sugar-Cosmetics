@@ -7,36 +7,32 @@ import { BsCurrencyDollar } from 'react-icons/bs'
 
 export default function Cart() {
   const fetchDataFromCart = useSelector(state => state.myProducts.cartProducts)
-  const cartValue = useSelector(state => state.myProducts.value)
-
-  const dispath = useDispatch()
-  // console.log(fetchDataFromCart)
+  const dispatch = useDispatch()
 
   function removeCartItem(product) {
-    dispath(removefromCart(product))
+    dispatch(removefromCart(product))
   }
 
   function increamentValue(product) {
-
-    // const myData = cartDatas.forEach((item) => (item.id === product.id))
-    // console.log(myData)
-    dispath(incrementCartCount(product))
+    dispatch(incrementCartCount(product));
   }
-
+  
   function decreamentValue(product) {
-    dispath(decrementCartCount(product))
+    dispatch(decrementCartCount(product));
   }
+  
+
   return (
     <div className={styles.CartProducts}>
       <div className={styles.products}>
         {
+          
           fetchDataFromCart.map((product) => (
             <div className={styles.lipsProduct}>
               <img className={styles.lipsImage} src={product.image_link} />
               {/* <p key={product.id} className={styles.productName}>{product.name}</p> */}
-              <p className={styles.price}>{ "" + product.price}</p>
-
-              <p><button onClick={() => increamentValue(product)}>+</button>{cartValue}<button onClick={() => decreamentValue(product)}>-</button></p>
+              <p className={styles.price}>{product.price}</p>
+              <p><button onClick={() => increamentValue(product)}>+</button>{product.quantity}<button onClick={() => decreamentValue(product)}>-</button></p>
               <RiDeleteBin6Line className={styles.deleteButton} onClick={() => removeCartItem(product)} />
             </div>
           ))
