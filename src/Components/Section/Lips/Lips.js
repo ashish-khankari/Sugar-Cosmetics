@@ -5,6 +5,7 @@ import styles from './Lips.module.css'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Filter from './Filter'
 
 export default function Lips() {
   const dispatch = useDispatch()
@@ -50,6 +51,8 @@ export default function Lips() {
 
     <div className={styles.products}>
       <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Lips.jpg' className={styles.titleImage} />
+
+      <Filter/>
       {lipsData.map((product) => (
 
         <div className={styles.lipsProduct}>

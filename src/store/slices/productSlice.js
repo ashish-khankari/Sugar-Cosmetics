@@ -34,16 +34,12 @@ const productSlice = createSlice({
         foundationProducts: [],
         cartProducts: JSON.parse(localStorage.getItem("cartProducts")) || [],
         bookMarkedProducts: JSON.parse(localStorage.getItem("bookmarkedProduct")) || [],
-        // cartData: [],
-        // cartDecrement:[],
         value: 0,
         loading: false,
         error: null
     },
     reducers: {
         addtoCart: (state, action) => {
-            // console.log(action)
-            // console.log(action.payload)
             state.cartProducts.push(action.payload)
             localStorage.setItem("cartProducts", JSON.stringify((state.cartProducts)))
 
@@ -65,7 +61,7 @@ const productSlice = createSlice({
         },
         decrementCartCount: (state, action) => {
             // state.cartData.push(action.payload.id)
-            // console.log(action.payload.id)
+            console.log(action.payload)
         },
         addtoFavourites: (state, action) => {
             // console.log(action.payload)
