@@ -5,7 +5,6 @@ import styles from './Lips.module.css'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Filter from './Filter'
 
 export default function Lips() {
   const dispatch = useDispatch()
