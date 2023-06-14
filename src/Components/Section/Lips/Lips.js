@@ -51,8 +51,6 @@ export default function Lips() {
 
     <div className={styles.products}>
       <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Lips.jpg' className={styles.titleImage} />
-
-      <Filter/>
       {lipsData.map((product) => (
 
         <div className={styles.lipsProduct}>
