@@ -46,35 +46,43 @@ const productSlice = createSlice({
             const newItem = {
                 ...action.payload,
                 quantity: 1, // Initialize quantity to 1
+                totalValue: 0
             };
             state.cartProducts.push(newItem);
+            
             localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
+
         },
 
         removefromCart: (state, action) => {
-            //    console.log(action.payload)
             state.cartProducts = state.cartProducts.filter((item) => item.id !== action.payload.id)
             localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts))
         },
+
         incrementCartCount: (state, action) => {
             const productId = action.payload.id;
-            // console.log(action.payload)
             const product = state.cartProducts.find(item => item.id === productId);
             if (product) {
                 product.quantity += 1;
+                product.totalValue = ((product.price) * product.quantity)
                 localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
             }
+
         },
 
         decrementCartCount: (state, action) => {
             const productId = action.payload.id
             // console.log(productId)
             const product = state.cartProducts.find((item) => item.id === productId)
-            if (product.quantity>1) {
+            if (product.quantity > 1) {
                 product.quantity -= 1
+                product.totalValue = ((product.price) * product.quantity)
                 localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
-            }else{
-                state.cartProducts = state.cartProducts.filter((item) => item.id !== productId)    
+
+            } else {
+                state.cartProducts = state.cartProducts.filter((item) => item.id !== productId)
+                localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
+
             }
         },
         addtoFavourites: (state, action) => {
@@ -84,7 +92,13 @@ const productSlice = createSlice({
         },
         removefromFavourites: (state, action) => {
 
-        }
+        },
+
+        // TotalCartValue: (state, action) => {
+        //     const cartTotal = action.payload
+        //     // console.log(cartTotal)
+        //     console.log(action.payload.id)
+        // }
     },
 
     extraReducers: (builder) => {
