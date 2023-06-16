@@ -23,9 +23,9 @@ export default function CardCarousal1() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true, 
-    // autoplaySpeed: 2000, 
-    // fade: true, 
+    autoplay: true, 
+    autoplaySpeed: 5000, 
+    fade: true, 
     cssEase: 'linear'
   };
 
