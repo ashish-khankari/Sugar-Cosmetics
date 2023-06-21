@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getLipsData, addtoCart, addtoFavourites } from '../../../store/slices/productSlice'
 import styles from './Lips.module.css'
-import { AiOutlineHeart } from 'react-icons/ai'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Like from './BookMarkBtn/Like'
@@ -33,6 +32,7 @@ export default function Lips() {
 
   function addProducttoCart(product) {
     // cartData.find((already)=>())
+
     if (cartData.find((item) => (item.id) === product.id)) {
       showToastMessageforError()
     } else {
@@ -42,13 +42,22 @@ export default function Lips() {
 
   }
 
+
+  function sortAlphabetically() {
+
+  }
+
   function addedToBookmarkList(product) {
     // setbookmarkColor(!bookmarkColor)
     dispatch(addtoFavourites(product))
+    
   }
+
 
   return (
     <div className={styles.container}>
+      {/* <button onClick={sortAlphabetically}>Filter by Alphabets</button> */}
+      <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Lips.jpg' className={styles.titleImage} />
       {
         lipsData.map((product) => (
           <div className={styles.card}>
@@ -67,14 +76,16 @@ export default function Lips() {
               </div>
               <hr />
               <div className={styles.name}>
-              <h4>{product.name}</h4>
+                <h4>{product.name}</h4>
               </div>
               <div className={styles.btnGrp}>
                 <div className={styles.btn}>
                   <button onClick={() => addProducttoCart(product)}>Add to Cart</button>
                 </div>
 
-                <Like />
+                <div onClick={()=>addedToBookmarkList(product)}>
+                  <Like />
+                </div>
               </div>
             </div>
           </div>

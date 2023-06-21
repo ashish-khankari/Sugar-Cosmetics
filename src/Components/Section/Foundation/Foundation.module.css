@@ -16,7 +16,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 .card {
@@ -86,6 +86,9 @@ body {
   cursor: pointer;
 }
 
+.titleImage{
+  width: 100%;
+}
 .likeBtn{
     margin-left: 40px;
     margin-top: 10px;

@@ -9,7 +9,6 @@ import Eyes from "./Components/Section/Eyes/Eyes";
 import Brushes from "./Components/Section/Brushes/Brushes";
 import Stories from "./Components/Section/Stories/Stories";
 import Navbar from './Components/LandingPage/Header/Navbar/Navbar';
-import NavProducts from './Components/LandingPage/Header/NavProducts/NavProducts';
 import Cart from "./Components/LandingPage/Header/Navbar/Cart/Cart";
 import BookMark from "./Components/LandingPage/Header/Navbar/BookMark/BookMark";
 // import Footer from "./Components/LandingPage/HeroSection/Footer/Footer";
@@ -20,7 +19,6 @@ function App() {
     <div className="App">
       <div style={{top:"0", position:"sticky", zIndex:"1"}}>
       <Navbar />
-      <NavProducts />
       </div>
       
       <Routes>

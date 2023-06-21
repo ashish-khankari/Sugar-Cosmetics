@@ -1,11 +1,7 @@
-.icon{
-    margin-left: 100px;
-    font-size: 26px;
-    cursor: pointer;
+.closeicon{
+    font-size: 32px;
 }
 
-.closeicon{
-    margin-left: 100px;
+.icon{
     font-size: 30px;
-    cursor: pointer;
 }

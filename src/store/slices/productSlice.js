@@ -3,25 +3,25 @@ import { v4 as uuidv4 } from 'uuid'
 
 
 export const getLipsData = createAsyncThunk("lipsData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline");
+    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lip_liner");
     const lipsdata = response.json();
     return lipsdata
 })
 
 export const getEyesData = createAsyncThunk("eyesData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=l'oreal")
+    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyebrow")
     const eyesData = response.json()
     return eyesData
 })
 
 export const getBlushData = createAsyncThunk("brushesData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl")
+    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush")
     const blushData = response.json()
     return blushData
 })
 
 export const getFoundationData = createAsyncThunk("foundationData", async () => {
-    const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=e.l.f.")
+    const response = await fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline&product_type=foundation")
     const foundationData = response.json()
     return foundationData
 })

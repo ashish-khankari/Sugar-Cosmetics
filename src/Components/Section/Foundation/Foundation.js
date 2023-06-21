@@ -45,6 +45,7 @@ export default function Foundation() {
   }
   return (
     <div className={styles.container}>
+      <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Face.jpg' className={styles.titleImage}/>
       {
         foundationData.map((product) => (
           <div className={styles.card}>
