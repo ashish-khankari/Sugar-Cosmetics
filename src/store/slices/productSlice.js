@@ -34,6 +34,7 @@ const productSlice = createSlice({
         eyesProduct: [],
         blushProduct: [],
         foundationProducts: [],
+        // sortAlphabetically:[],
         cartProducts: JSON.parse(localStorage.getItem("cartProducts")) || [],
         bookMarkedProducts: JSON.parse(localStorage.getItem("bookmarkedProduct")) || [],
         loading: false,
@@ -45,7 +46,7 @@ const productSlice = createSlice({
         addtoCart: (state, action) => {
             const newItem = {
                 ...action.payload,
-                quantity: 1, // Initialize quantity to 1
+                quantity: 1,
                 totalValue: 0
             };
             state.cartProducts.push(newItem);
@@ -82,7 +83,6 @@ const productSlice = createSlice({
             } else {
                 state.cartProducts = state.cartProducts.filter((item) => item.id !== productId)
                 localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
-
             }
         },
         addtoFavourites: (state, action) => {
@@ -90,15 +90,40 @@ const productSlice = createSlice({
             state.bookMarkedProducts.push(action.payload)
             localStorage.setItem("bookmarkedProduct", JSON.stringify(state.bookMarkedProducts))
         },
-        removefromFavourites: (state, action) => {
 
-        },
+        sortbyName: (state) => {
+            state.products.sort((a, b) => {
+              const nameA = a.name;
+              const nameB = b.name;
+              return nameA - nameB
+            });
+          },
 
-        // TotalCartValue: (state, action) => {
-        //     const cartTotal = action.payload
-        //     // console.log(cartTotal)
-        //     console.log(action.payload.id)
-        // }
+          sortfromHightoLow:(state)=>{
+            state.products.sort((a,b)=>{
+                let priceA = a.price;
+                let priceB = b.price;
+
+                // if(priceA<priceB){
+                //     return -1
+                // }
+                // if(priceA>priceB){
+                //     return 1
+                // }
+                // return 0
+                return priceB - priceA
+            })
+          },
+
+          sortfromLowtoHigh:(state)=>{
+            state.products.sort((a,b)=>{
+                let priceA = a.price;
+                let priceB = b.price;
+                return priceA - priceB
+            })
+          }
+      
+        
     },
 
     extraReducers: (builder) => {
@@ -154,6 +179,6 @@ const productSlice = createSlice({
 
 })
 
-export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites } = productSlice.actions
+export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites,sortbyName, sortfromHightoLow, sortfromLowtoHigh } = productSlice.actions
 
 export default productSlice.reducer

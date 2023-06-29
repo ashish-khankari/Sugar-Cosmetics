@@ -11,8 +11,14 @@ body {
 .titleImage{
   width: 100%;
 }
-.container {
-  /* width: 100%; */
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.mappedData{
   height: 80vh;
   justify-content: center;
   align-items: center;
@@ -21,6 +27,7 @@ body {
   gap: 40px;
   margin-top: 60px;
 }
+
 
 .card {
   width: 300px;
