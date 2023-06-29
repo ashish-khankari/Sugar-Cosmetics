@@ -17,6 +17,11 @@ body {
   align-items: center;
 }
 
+.radiobutton{
+  width: 250px;
+}
+
+
 .mappedData{
   height: 80vh;
   justify-content: center;

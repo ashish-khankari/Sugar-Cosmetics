@@ -50,7 +50,7 @@ const productSlice = createSlice({
                 totalValue: 0
             };
             state.cartProducts.push(newItem);
-            
+
             localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
 
         },
@@ -93,47 +93,107 @@ const productSlice = createSlice({
 
         sortbyName: (state) => {
             state.products.sort((a, b) => {
-              const nameA = a.name;
-              const nameB = b.name;
-              return nameA - nameB
+                const nameA = a.name;
+                const nameB = b.name;
+                if (nameA < nameB) {
+                    return -1
+                }
+                if (nameA > nameB) {
+                    return 1
+                }
+                return 0
             })
 
             state.eyesProduct.sort((a, b) => {
                 const nameA = a.name;
                 const nameB = b.name;
-                return nameA - nameB
-              })
-          },
+                if (nameA < nameB) {
+                    return -1
+                }
+                if (nameA > nameB) {
+                    return 1
+                }
+                return 0
+            })
 
-          sortfromHightoLow:(state)=>{
-            state.products.sort((a,b)=>{
+            state.blushProduct.sort((a, b) => {
+                const nameA = a.name;
+                const nameB = b.name;
+                if (nameA < nameB) {
+                    return -1
+                }
+                if (nameA > nameB) {
+                    return 1
+                }
+                return 0
+            })
+
+            state.foundationProducts.sort((a, b) => {
+                const nameA = a.name;
+                const nameB = b.name;
+                if (nameA < nameB) {
+                    return -1
+                }
+                if (nameA > nameB) {
+                    return 1
+                }
+                return 0
+            })
+        },
+
+        sortfromHightoLow: (state) => {
+            state.products.sort((a, b) => {
                 let priceA = a.price;
                 let priceB = b.price;
                 return priceB - priceA
             })
 
-            state.eyesProduct.sort((a,b)=>{
+            state.eyesProduct.sort((a, b) => {
                 let priceA = a.price;
                 let priceB = b.price;
                 return priceB - priceA
             })
-          },
 
-          sortfromLowtoHigh:(state)=>{
-            state.products.sort((a,b)=>{
+            state.foundationProducts.sort((a, b) => {
+                let priceA = a.price;
+                let priceB = b.price;
+                return priceB - priceA
+            })
+
+            state.blushProduct.sort((a, b) => {
+                let priceA = a.price;
+                let priceB = b.price;
+                return priceB - priceA
+            })
+        },
+
+        sortfromLowtoHigh: (state) => {
+            state.products.sort((a, b) => {
                 let priceA = a.price;
                 let priceB = b.price;
                 return priceA - priceB
             })
 
-            state.eyesProduct.sort((a,b)=>{
+            state.eyesProduct.sort((a, b) => {
                 let priceA = a.price;
                 let priceB = b.price;
                 return priceA - priceB
             })
-          }
-      
-        
+
+            state.blushProduct.sort((a, b) => {
+                let priceA = a.price;
+                let priceB = b.price;
+                return priceA - priceB
+            })
+
+            state.foundationProducts.sort((a, b) => {
+                let priceA = a.price;
+                let priceB = b.price;
+                return priceA - priceB
+            })
+        }
+
+
     },
 
     extraReducers: (builder) => {
@@ -189,6 +249,6 @@ const productSlice = createSlice({
 
 })
 
-export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites,sortbyName, sortfromHightoLow, sortfromLowtoHigh } = productSlice.actions
+export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites, sortbyName, sortfromHightoLow, sortfromLowtoHigh } = productSlice.actions
 
 export default productSlice.reducer
