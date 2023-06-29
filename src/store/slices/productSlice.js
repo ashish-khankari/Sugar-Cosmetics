@@ -96,27 +96,37 @@ const productSlice = createSlice({
               const nameA = a.name;
               const nameB = b.name;
               return nameA - nameB
-            });
+            })
+
+            state.eyesProduct.sort((a, b) => {
+                const nameA = a.name;
+                const nameB = b.name;
+                return nameA - nameB
+              })
           },
 
           sortfromHightoLow:(state)=>{
             state.products.sort((a,b)=>{
                 let priceA = a.price;
                 let priceB = b.price;
+                return priceB - priceA
+            })
 
-                // if(priceA<priceB){
-                //     return -1
-                // }
-                // if(priceA>priceB){
-                //     return 1
-                // }
-                // return 0
+            state.eyesProduct.sort((a,b)=>{
+                let priceA = a.price;
+                let priceB = b.price;
                 return priceB - priceA
             })
           },
 
           sortfromLowtoHigh:(state)=>{
             state.products.sort((a,b)=>{
+                let priceA = a.price;
+                let priceB = b.price;
+                return priceA - priceB
+            })
+
+            state.eyesProduct.sort((a,b)=>{
                 let priceA = a.price;
                 let priceB = b.price;
                 return priceA - priceB

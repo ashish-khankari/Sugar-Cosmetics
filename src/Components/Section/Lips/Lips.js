@@ -33,8 +33,7 @@ export default function Lips() {
 
 
   function addProducttoCart(product) {
-    // cartData.find((already)=>())
-
+    
     if (cartData.find((item) => (item.id) === product.id)) {
       showToastMessageforError()
     } else {
@@ -45,9 +44,7 @@ export default function Lips() {
   }
 
   function addedToBookmarkList(product) {
-    // setbookmarkColor(!bookmarkColor)
     dispatch(addtoFavourites(product))
-
   }
 
   function sortAlphabetically() {
@@ -71,14 +68,6 @@ export default function Lips() {
 
       <div className={styles.innerContainer}>
         <div className={styles.buttons}>
-
-          {/* <select onChange={handleChange} value={setData} >
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-          </select> */}
-
           <div className={styles.radiobutton}>
             <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
             <lable>Name</lable>
