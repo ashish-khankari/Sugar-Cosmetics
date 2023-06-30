@@ -34,7 +34,7 @@ const productSlice = createSlice({
         eyesProduct: [],
         blushProduct: [],
         foundationProducts: [],
-        // sortAlphabetically:[],
+        dataFound: [],
         cartProducts: JSON.parse(localStorage.getItem("cartProducts")) || [],
         bookMarkedProducts: JSON.parse(localStorage.getItem("bookmarkedProduct")) || [],
         loading: false,
@@ -191,9 +191,15 @@ const productSlice = createSlice({
                 let priceB = b.price;
                 return priceA - priceB
             })
+        },
+
+        searchReducer: (state, action) => {
+            const searchQuery = action.payload.toLowerCase();
+            state.dataFound = state.foundationProducts.filter(product =>product.name.toLowerCase().includes(searchQuery))
+            state.dataFound = state.products.filter(product =>product.name.toLowerCase().includes(searchQuery))
+            state.dataFound = state.eyesProduct.filter(product =>product.name.toLowerCase().includes(searchQuery))
+            state.dataFound = state.blushProduct.filter(product =>product.name.toLowerCase().includes(searchQuery))
         }
-
-
     },
 
     extraReducers: (builder) => {
@@ -249,6 +255,6 @@ const productSlice = createSlice({
 
 })
 
-export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites, sortbyName, sortfromHightoLow, sortfromLowtoHigh } = productSlice.actions
+export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites, sortbyName, sortfromHightoLow, sortfromLowtoHigh, searchReducer } = productSlice.actions
 
 export default productSlice.reducer

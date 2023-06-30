@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getLipsData, addtoCart, addtoFavourites, sortbyName, sortfromHightoLow,sortfromLowtoHigh } from '../../../store/slices/productSlice'
+import { getLipsData, addtoCart, addtoFavourites, sortbyName, sortfromHightoLow, sortfromLowtoHigh } from '../../../store/slices/productSlice'
 import styles from './Lips.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,8 +12,6 @@ export default function Lips() {
   const lipsData = useSelector(state => state.myProducts.products)
   const cartData = useSelector(state => state.myProducts.cartProducts)
 
-  // console.log(lipsData)
-  // const [bookmarkColor, setbookmarkColor] = useState(false)
 
   useEffect(() => {
     dispatch(getLipsData())
@@ -33,7 +31,7 @@ export default function Lips() {
 
 
   function addProducttoCart(product) {
-    
+
     if (cartData.find((item) => (item.id) === product.id)) {
       showToastMessageforError()
     } else {
@@ -51,11 +49,11 @@ export default function Lips() {
     dispatch(sortbyName());
   }
 
-  function sortHightoLow(){
+  function sortHightoLow() {
     dispatch(sortfromHightoLow())
   }
 
-  function sortLowtoHigh(){
+  function sortLowtoHigh() {
     dispatch(sortfromLowtoHigh())
   }
 
@@ -122,10 +120,7 @@ export default function Lips() {
           }
         </div>
       </div>
-
-
       <ToastContainer />
-
     </div>
   )
 }
