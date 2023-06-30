@@ -11,6 +11,7 @@ import Stories from "./Components/Section/Stories/Stories";
 import Navbar from './Components/LandingPage/Header/Navbar/Navbar';
 import Cart from "./Components/LandingPage/Header/Navbar/Cart/Cart";
 import BookMark from "./Components/LandingPage/Header/Navbar/BookMark/BookMark";
+import Search from "./Components/Section/Search/Search";
 // import Footer from "./Components/LandingPage/HeroSection/Footer/Footer";
 import './App.css'
 
@@ -33,6 +34,9 @@ function App() {
         {/* <Route path="/stories" element={<Stories />} /> */}
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/bookmark" element={<BookMark/>}/>
+        <Route path="/search" element={<Search/>}/>
+
+
       </Routes>
       {/* <Footer/> */}
     </div>
