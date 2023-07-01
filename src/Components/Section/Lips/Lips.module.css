@@ -41,6 +41,12 @@ body {
   gap: 25px;
   background-color: #fff;
 }
+
+.card:hover{
+  transform: translateY(-15px);
+  
+}
+
 .card > *:not(img) {
   padding: 5px 10px;
 }

@@ -7,6 +7,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBlushData, getEyesData, getFoundationData, getLipsData, searchReducer } from '../../../../store/slices/productSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // import {} from 
 
 
@@ -17,23 +20,33 @@ export default function Navbar() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const showToastMessageforError = () => {
+    toast.info('Please Enter Valid Input!', {
+      position: toast.POSITION.TOP_CENTER
+    });
+  };
+
   function handleMenuBar() {
     setMenu(!menu)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getLipsData())
     dispatch(getBlushData())
     dispatch(getEyesData())
     dispatch(getFoundationData())
-  },[])
-  
+  }, [])
+
   function getSearchData() {
-    dispatch(searchReducer(searchData))
-     navigate('/search')
+    if (searchData === '') {
+      showToastMessageforError()
+    } else {
+      dispatch(searchReducer(searchData))
+      navigate('/search')
+    }
   }
 
-  
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -65,6 +78,10 @@ export default function Navbar() {
       <AiOutlineMenu
         className={styles.menuBar}
         onClick={handleMenuBar} />
+
+      <ToastContainer />
     </div>
+
+
   )
 }

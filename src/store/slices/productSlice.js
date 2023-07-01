@@ -250,9 +250,7 @@ const productSlice = createSlice({
         builder.addCase(getFoundationData.rejected, (state) => {
             state.loading = false;
         })
-
     }
-
 })
 
 export const { addtoCart, removefromCart, incrementCartCount, decrementCartCount, addtoFavourites, removefromFavourites, sortbyName, sortfromHightoLow, sortfromLowtoHigh, searchReducer } = productSlice.actions

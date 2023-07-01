@@ -63,30 +63,8 @@
   
    .searchContainer button:hover {
     background: #ccc;
+    transition: 0.5s all ease;
   }
-  /* .searchField {
-    display: flex;
-    align-items: center;
-    margin-left: -150px;
-  }
-  
-  .searchField input {
-    margin-right: 10px;
-    height: 30px;
-  }
-  
-  .searchField button {
-    background-color: white;
-    color: black;
-    border: none;
-    cursor: pointer;
-    height: 34px;
-  }
-  
-  .searchField button:hover {
-    background-color: gray;
-    color: white;
-  } */
   
   @media only screen and (max-width: 1000px) {
     .lists {
