@@ -12,6 +12,7 @@ export default function Eyes() {
   const dispatch = useDispatch()
   const eyesData = useSelector(state => state.myProducts.eyesProduct)
   const cartData = useSelector(state => state.myProducts.cartProducts)
+  const selectBookmarkedProduct = useSelector(state =>state.myProducts.bookMarkedProducts)
 
   const showToastMessageforError = () => {
     toast.info('Product already addedto Cart !', {
@@ -39,8 +40,14 @@ export default function Eyes() {
   }
 
   function addedToBookmarkList(product) {
-    dispatch(addtoFavourites(product))
-  }
+    if(selectBookmarkedProduct.find((item)=>(item.id)===product.id)){
+     return;
+    }else{
+     dispatch(addtoFavourites(product))
+    }
+     
+   }
+ 
 
   // function sortAlphabetically(){
 
@@ -105,7 +112,9 @@ export default function Eyes() {
                       <button onClick={() => addProducttoCart(product)}>Add to Cart</button>
                     </div>
 
-                    <Like />
+                    <div onClick={() => addedToBookmarkList(product)}>
+                      <Like />
+                    </div>
                   </div>
                 </div>
               </div>

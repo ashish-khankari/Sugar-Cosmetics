@@ -3,12 +3,10 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 import { BiBookmark } from "react-icons/bi";
 import './Like.css'
 
-function Like(props) {
-    const [color, setColor] = useState(<BiBookmark />);
+function Like() {
     const [isFavorited, setIsFavorited] = useState(false);
 
     const handleClick = () => {
-        setColor(<BsFillBookmarkFill style={{ color: "red" }} />);
         setIsFavorited(!isFavorited);
     };
     return (
@@ -17,10 +15,10 @@ function Like(props) {
             style={{
                 display: "flex",
                 alignItems: "center",
-            
             }}
         >
             {isFavorited ? (
+                //    localStorage.setItem("icons",JSON.stringify(<BsFillBookmarkFill className="closeicon" />)) 
                 <BsFillBookmarkFill className="closeicon" />
             ) : (
                 <BiBookmark className="icon" />
@@ -28,5 +26,4 @@ function Like(props) {
         </div>
     );
 }
-
 export default Like;

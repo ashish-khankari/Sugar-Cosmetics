@@ -93,6 +93,8 @@ body {
 
 .btnGrp {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .btnGrp .btn button {
@@ -112,4 +114,10 @@ body {
     margin-top: 10px;
     height: 20px;
     width: 20px;
+}
+
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

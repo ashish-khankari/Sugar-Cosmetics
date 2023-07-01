@@ -83,6 +83,16 @@ body {
   font-size: 14px;
 }
 
+.mappedData{
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 60px;
+}
+
 .viewBtn a {
   padding: 5px 15px;
   border: 1.5px solid #007bff;
@@ -93,6 +103,8 @@ body {
 
 .btnGrp {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .btnGrp .btn button {
@@ -107,25 +119,15 @@ body {
   cursor: pointer;
 }
 
-.buttons{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.mappedData{
-  height: 80vh;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 60px;
-}
-
 .likeBtn{
     margin-left: 40px;
     margin-top: 10px;
     height: 20px;
     width: 20px;
+}
+
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

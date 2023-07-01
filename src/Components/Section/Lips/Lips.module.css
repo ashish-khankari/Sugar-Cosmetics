@@ -42,10 +42,10 @@ body {
   background-color: #fff;
 }
 
-.card:hover{
+/* .card:hover{
   transform: translateY(-15px);
   
-}
+} */
 
 .card > *:not(img) {
   padding: 5px 10px;

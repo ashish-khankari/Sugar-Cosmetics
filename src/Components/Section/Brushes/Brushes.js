@@ -12,6 +12,8 @@ export default function Brushes() {
   const dispatch = useDispatch()
   const blushProducts = useSelector(state => state.myProducts.blushProduct)
   const cartProductsData = useSelector(state => state.myProducts.cartProducts)
+  const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
+
   console.log(blushProducts)
 
   const showToastMessageforError = () => {
@@ -41,8 +43,13 @@ export default function Brushes() {
     }
   }
 
-  function addtoBookmarkSection(product) {
-    dispatch(addtoFavourites(product))
+  function addedToBookmarkList(product) {
+    if (selectBookmarkedProduct.find((item) => (item.id) === product.id)) {
+      return;
+    } else {
+      dispatch(addtoFavourites(product))
+    }
+
   }
 
   function sortAlphabetically() {
@@ -104,7 +111,9 @@ export default function Brushes() {
                       <button onClick={() => addProducttoCart(product)}>Add to Cart</button>
                     </div>
 
-                    <Like />
+                    <div onClick={() => addedToBookmarkList(product)}>
+                      <Like />
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,9 @@
 .closeicon{
     font-size: 32px;
+    cursor: pointer;
 }
 
 .icon{
     font-size: 30px;
+    cursor: pointer;
 }

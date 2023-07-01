@@ -12,6 +12,7 @@ export default function Foundation() {
   const dispatch = useDispatch()
   const foundationData = useSelector(state => state.myProducts.foundationProducts)
   const cartData = useSelector(state => state.myProducts.cartProducts)
+  const selectBookmarkedProduct = useSelector(state =>state.myProducts.bookMarkedProducts)
 
 
   useEffect(() => {
@@ -41,7 +42,11 @@ export default function Foundation() {
   }
 
   function addtoBookmarkSection(product) {
-    dispatch(addtoFavourites(product))
+    if(selectBookmarkedProduct.find((item)=>(item.id)===product.id)){
+      return;
+     }else{
+      dispatch(addtoFavourites(product))
+     }
   }
 
   function sortAlphabetically() {
@@ -103,8 +108,9 @@ export default function Foundation() {
                     <div className={styles.btn}>
                       <button onClick={() => addProductToCart(product)}>Add to Cart</button>
                     </div>
-
-                    <Like />
+                    <div onClick={() => addtoBookmarkSection(product)}>
+                      <Like />
+                    </div>
                   </div>
                 </div>
               </div>
