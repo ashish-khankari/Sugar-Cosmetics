@@ -11,7 +11,7 @@ export default function Lips() {
   const dispatch = useDispatch()
   const lipsData = useSelector(state => state.myProducts.products)
   const cartData = useSelector(state => state.myProducts.cartProducts)
-  const selectBookmarkedProduct = useSelector(state =>state.myProducts.bookMarkedProducts)
+  const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
 
   useEffect(() => {
     dispatch(getLipsData())
@@ -42,12 +42,12 @@ export default function Lips() {
   }
 
   function addedToBookmarkList(product) {
-   if(selectBookmarkedProduct.find((item)=>(item.id)===product.id)){
-    return;
-   }else{
-    dispatch(addtoFavourites(product))
-   }
-    
+    if (selectBookmarkedProduct.find((item) => (item.id) === product.id)) {
+      return;
+    } else {
+      dispatch(addtoFavourites(product))
+    }
+
   }
 
   function sortAlphabetically() {
@@ -61,7 +61,6 @@ export default function Lips() {
   function sortLowtoHigh() {
     dispatch(sortfromLowtoHigh())
   }
-
 
   return (
     <div className={styles.container} >

@@ -21,7 +21,11 @@ body {
   width: 250px;
 }
 
-
+.deleteIcon{
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
 .mappedData{
   height: 80vh;
   justify-content: center;

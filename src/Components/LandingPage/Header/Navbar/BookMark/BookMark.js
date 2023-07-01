@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './BookMark.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addtoCart } from '../../../../../store/slices/productSlice';
+import { addtoCart, removefromFavourites } from '../../../../../store/slices/productSlice';
+import {AiTwotoneDelete} from 'react-icons/ai'
 
 export default function BookMark() {
     const showToastMessageforError = () => {
@@ -17,7 +18,6 @@ export default function BookMark() {
             position: toast.POSITION.TOP_RIGHT
         })
     }
-
 
     const getBookMarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
     const cartData = useSelector(state => state.myProducts.cartProducts)
@@ -33,12 +33,19 @@ export default function BookMark() {
             showToastMessageforSuccess()
         }
     }
+    
+    function deletefromBookmark(product){
+        dispatch(removefromFavourites(product))
+    }
+
     return (
         <div className={styles.mappedData}>
             {
                 getBookMarkedProduct.map((product) => (
                     <div className={styles.card} key={product.id}>
-
+                        <div>
+                            <AiTwotoneDelete className={styles.deleteIcon} onClick={()=>deletefromBookmark(product)}/>
+                        </div>
                         <div className={styles.imagess}>
                             <img src={product.image_link} className={styles.image} alt="" />
                         </div>

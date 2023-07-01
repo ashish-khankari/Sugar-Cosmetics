@@ -27,6 +27,7 @@ export const getFoundationData = createAsyncThunk("foundationData", async () => 
 })
 
 
+
 const productSlice = createSlice({
     name: "products",
     initialState: {
@@ -88,6 +89,10 @@ const productSlice = createSlice({
         addtoFavourites: (state, action) => {
             // console.log(action.payload)
             state.bookMarkedProducts.push(action.payload)
+            localStorage.setItem("bookmarkedProduct", JSON.stringify(state.bookMarkedProducts))
+        },
+        removefromFavourites:(state, action)=>{
+            state.bookMarkedProducts = state.bookMarkedProducts.filter((item)=>(item.id !==action.payload.id))
             localStorage.setItem("bookmarkedProduct", JSON.stringify(state.bookMarkedProducts))
         },
 
