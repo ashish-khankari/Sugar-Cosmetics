@@ -36,7 +36,6 @@ export default function Cart() {
     dispatch(decrementCartCount(product));
   }
 
-
   return (
     <div className={styles.cartContainer}>
       <h2>Shopping Cart</h2>
@@ -79,7 +78,7 @@ export default function Cart() {
                     <div>
                       <h3>{product.name}</h3>
                       <button onClick={() => removeCartItem(product)}>
-                        <AiFillDelete className={styles.removeItem}/>
+                        <AiFillDelete className={styles.removeItem} />
                       </button>
                     </div>
                   </div>
@@ -99,8 +98,8 @@ export default function Cart() {
           </div>
           <div className={styles.cartSummary}>
             <button className={styles.clearBtn}>
-            Clear Cart
-          </button>
+              Clear Cart
+            </button>
             <div className={styles.cartCheckout}>
               <div className={styles.subTotal}>
                 <span>Subtotal: </span>
@@ -135,32 +134,6 @@ export default function Cart() {
         </div>
       )}
     </div>
-    // <div className={styles.CartProducts}>
-    //   <div className={styles.products}>
-    //     {
-    //       fetchDataFromCart.map((product) => (
-    //         <div className={styles.lipsProduct} key={product.id}>
-    //           <img className={styles.lipsImage} src={product.image_link} />
-    //           <div className={styles.NameandPrice}>
-    //             <p>{product.name}</p>
-    //             <p className={styles.price}>{product.price}</p>
-    //           </div>
-    //           <p><AiOutlinePlus onClick={() => increamentValue(product)} />{product.quantity} <AiOutlineMinus onClick={() => decreamentValue(product)} />  </p>
-    //           <AiFillDelete className={styles.deleteButton} onClick={() => removeCartItem(product)} />
-    //         </div>
-    //       ))
-    //     }
-
-    //     <div className={styles.checkOutCart}>
-    //       <h1>Total Sum</h1>
-    //       {
-    //         increamentValue ? countIncrement : countDecrement
-    //       }
-    //       {/* {totalSum} */}
-    //     </div>
-    //   </div>
-    // </div>
-
   )
 }
 

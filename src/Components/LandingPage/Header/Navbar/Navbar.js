@@ -67,7 +67,7 @@ export default function Navbar() {
 
       </div>
       <div className={styles.searchContainer}>
-        <input type="text" placeholder="Search.." name="search" onChange={(e) => setSearchData(e.target.value)} />
+        <input type="text" placeholder="Try Eye..." name="search" onChange={(e) => setSearchData(e.target.value)} />
         <button type="submit" onClick={getSearchData}><i className="fa fa-search"></i></button>
       </div>
       <div className={styles.icons}>
