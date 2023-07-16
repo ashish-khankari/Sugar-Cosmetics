@@ -11,7 +11,8 @@
 
 .sugarLogo {
   /* width: 18vw; */
-  height: 5rem;
+  height: 60px;
+  width: 100px;
 }
 
 .lists {
@@ -45,6 +46,22 @@
   width: 26px;
   cursor: pointer;
   color: white;
+}
+
+.searchField{
+  width: 250px;
+  height: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.searchContainer .searchBtn{
+  height: 42px;
+  width: 30px;
+  background-color: #fefefe;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-right: 5px;
 }
 
 .menuBar{
