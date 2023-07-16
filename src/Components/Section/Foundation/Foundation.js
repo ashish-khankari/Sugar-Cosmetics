@@ -14,7 +14,7 @@ export default function Foundation() {
   const foundationData = useSelector(state => state.myProducts.foundationProducts)
   const cartData = useSelector(state => state.myProducts.cartProducts)
   const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
-
+  
 
   useEffect(() => {
     dispatch(getFoundationData())
@@ -87,6 +87,9 @@ export default function Foundation() {
               <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
               <lable>Price - Low to High</lable>
             </div>
+
+          </div>
+          <div>
 
           </div>
         </div>
