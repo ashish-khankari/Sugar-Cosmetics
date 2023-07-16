@@ -10,7 +10,8 @@
 }
 
 .sugarLogo {
-  width: 200px;
+  /* width: 18vw; */
+  height: 5rem;
 }
 
 .lists {
@@ -98,10 +99,16 @@ input[type=text] {
     cursor: pointer;
     text-decoration: none;
   }
+
+  .searchContainer{
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
   .menuBar {
     display: none;
   }
+
+  
 }
