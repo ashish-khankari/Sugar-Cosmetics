@@ -5,6 +5,8 @@ import styles from './Lips.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Like from './BookMarkBtn/Like'
+import { AiFillHome } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 
 export default function Lips() {
@@ -67,26 +69,30 @@ export default function Lips() {
       <div>
         <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Lips.jpg' className={styles.titleImage} />
       </div>
-
       <div className={styles.innerContainer}>
-        <div className={styles.buttons}>
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
-            <lable>Name</lable>
+        <div className={styles.pagePosition}>
+          <div className={styles.homeIcon}>
+            <Link to={'/'}><AiFillHome className={styles.home}/></Link>
+            <p>/ Lips</p>
           </div>
+          <div className={styles.buttons}>
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
+              <lable>Name</lable>
+            </div>
 
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
-            <lable>Price - High to Low</lable>
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
+              <lable>Price - High to Low</lable>
+            </div>
+
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
+              <lable>Price - Low to High</lable>
+            </div>
+
           </div>
-
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
-            <lable>Price - Low to High</lable>
-          </div>
-
         </div>
-
         <div className={styles.mappedData}>
           {
             lipsData.map((product) => (

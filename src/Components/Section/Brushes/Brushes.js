@@ -4,8 +4,9 @@ import { addtoCart, getBlushData, addtoFavourites, sortfromHightoLow, sortfromLo
 import styles from './Brushes.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineHeart, AiFillHome } from 'react-icons/ai'
 import Like from '../Lips/BookMarkBtn/Like';
+import { Link } from 'react-router-dom'
 
 
 export default function Brushes() {
@@ -68,22 +69,28 @@ export default function Brushes() {
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <div className={styles.buttons}>
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
-            <lable>Name</lable>
+        <div className={styles.pagePosition}>
+          <div className={styles.homeIcon}>
+            <Link to={'/'}><AiFillHome className={styles.home} /></Link>
+            <p>/ Brushes</p>
           </div>
+          <div className={styles.buttons}>
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
+              <lable>Name</lable>
+            </div>
 
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
-            <lable>Price - High to Low</lable>
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
+              <lable>Price - High to Low</lable>
+            </div>
+
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
+              <lable>Price - Low to High</lable>
+            </div>
+
           </div>
-
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
-            <lable>Price - Low to High</lable>
-          </div>
-
         </div>
         <div className={styles.mappedData}>
           {
@@ -120,10 +127,10 @@ export default function Brushes() {
             ))
           }
         </div>
+
+
+        <ToastContainer />
       </div>
-
-      <ToastContainer />
-
     </div>
   )
 }

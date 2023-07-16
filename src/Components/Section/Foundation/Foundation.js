@@ -2,17 +2,18 @@ import React, { useEffect } from 'react'
 import { addtoCart, addtoFavourites, getFoundationData, sortbyName, sortfromHightoLow, sortfromLowtoHigh } from '../../../store/slices/productSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './Foundation.module.css'
-import { AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineHeart, AiFillHome } from 'react-icons/ai'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Like from '../Lips/BookMarkBtn/Like'
+import {Link} from 'react-router-dom'
 
 
 export default function Foundation() {
   const dispatch = useDispatch()
   const foundationData = useSelector(state => state.myProducts.foundationProducts)
   const cartData = useSelector(state => state.myProducts.cartProducts)
-  const selectBookmarkedProduct = useSelector(state =>state.myProducts.bookMarkedProducts)
+  const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
 
 
   useEffect(() => {
@@ -42,11 +43,11 @@ export default function Foundation() {
   }
 
   function addtoBookmarkSection(product) {
-    if(selectBookmarkedProduct.find((item)=>(item.id)===product.id)){
+    if (selectBookmarkedProduct.find((item) => (item.id) === product.id)) {
       return;
-     }else{
+    } else {
       dispatch(addtoFavourites(product))
-     }
+    }
   }
 
   function sortAlphabetically() {
@@ -66,22 +67,28 @@ export default function Foundation() {
       <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Face.jpg' className={styles.titleImage} />
 
       <div className={styles.innerContainer}>
-        <div className={styles.buttons}>
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
-            <lable>Name</lable>
+        <div className={styles.pagePosition}>
+          <div className={styles.homeIcon}>
+            <Link to={'/'}><AiFillHome className={styles.home} /></Link>
+            <p>/ Foundation</p>
           </div>
+          <div className={styles.buttons}>
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
+              <lable>Name</lable>
+            </div>
 
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
-            <lable>Price - High to Low</lable>
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
+              <lable>Price - High to Low</lable>
+            </div>
+
+            <div className={styles.radiobutton}>
+              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
+              <lable>Price - Low to High</lable>
+            </div>
+
           </div>
-
-          <div className={styles.radiobutton}>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
-            <lable>Price - Low to High</lable>
-          </div>
-
         </div>
         <div className={styles.mappedData}>
           {

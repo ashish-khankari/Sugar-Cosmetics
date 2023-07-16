@@ -125,3 +125,26 @@ body {
 .titleImage{
   width: 100%;
 }
+
+.pagePosition{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 55px;
+}
+
+.homeIcon{
+  margin-left: 55px;
+  font-size: 18px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  
+}
+
+.homeIcon p{
+  margin-left: 10px;
+}
+.home{
+  color: #000000;
+}
