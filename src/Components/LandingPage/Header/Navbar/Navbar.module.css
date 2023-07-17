@@ -49,14 +49,14 @@
 }
 
 .searchField{
-  width: 250px;
+  width: 200px;
   height: 30px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
 .searchContainer{
-  margin-left: 120px;
+  margin-left: 110px;
 }
 .searchContainer .searchBtn{
   height: 42px;
