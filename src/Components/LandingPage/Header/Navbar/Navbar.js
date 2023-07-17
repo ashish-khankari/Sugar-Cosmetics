@@ -5,7 +5,7 @@ import { BiStoreAlt, BiUser } from 'react-icons/bi'
 import { CiDiscount1 } from 'react-icons/ci'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getBlushData, getEyesData, getFoundationData, getLipsData, searchReducer } from '../../../../store/slices/productSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,14 +61,16 @@ export default function Navbar() {
                   <p className={styles.elements} onClick={handleMenuBar}>{navElement}</p>
                 </Link>
               </li>
+
             ))}
+            <div className={styles.searchContainer}>
+              <input type="text" placeholder="Try Eye..." name="search" onChange={(e) => setSearchData(e.target.value)} className={styles.searchField} />
+              <button type="submit" onClick={getSearchData} className={styles.searchBtn}><i className="fa fa-search"></i></button>
+            </div>
           </ul>
         </div>
       </div>
-      <div className={styles.searchContainer}>
-        <input type="text" placeholder="Try Eye..." name="search" onChange={(e) => setSearchData(e.target.value)} className={styles.searchField} />
-        <button type="submit" onClick={getSearchData} className={styles.searchBtn}><i className="fa fa-search"></i></button>
-      </div>
+
       <div className={styles.icons}>
         <Link to={'/bookmark'}> <AiOutlineHeart className={styles.icon} /></Link>
         <Link to={'/cart'}><BiStoreAlt className={styles.icon} /></Link>
@@ -77,10 +79,7 @@ export default function Navbar() {
       <AiOutlineMenu
         className={styles.menuBar}
         onClick={handleMenuBar} />
-
       <ToastContainer />
     </div>
-
-
   )
 }

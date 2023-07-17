@@ -23,8 +23,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: -45px;
+  
 }
-
+.card:hover{
+  transition: transform 0.1s;
+  transform: scale(1.05);
+}
 .mappedData{
   height: 80vh;
   justify-content: center;

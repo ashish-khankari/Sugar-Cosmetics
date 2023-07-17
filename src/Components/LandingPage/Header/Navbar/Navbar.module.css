@@ -55,10 +55,13 @@
   border-bottom-left-radius: 5px;
 }
 
+.searchContainer{
+  margin-left: 120px;
+}
 .searchContainer .searchBtn{
   height: 42px;
   width: 30px;
-  background-color: #fefefe;
+  background-color: #a2a2a2;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   margin-right: 5px;
@@ -103,10 +106,10 @@ input[type=text] {
     position: absolute;
     left: 0;
     width: 95%;
-    height: 550px;
+    height: 570px;
     right: 0;
     background-color: rgb(255, 255, 255);
-    border-radius: 15px;
+    border-radius: 5px;
     color: #000000;
   }
 
@@ -118,7 +121,23 @@ input[type=text] {
   }
 
   .searchContainer{
-    display: none;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .searchField{
+    background-color: #e1e1e1;
+  }
+
+  .searchContainer .searchBtn{
+    height: 42px;
+    width: 30px;
+    background-color: #a2a2a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-right: 5px;
   }
 }
 
@@ -127,5 +146,4 @@ input[type=text] {
     display: none;
   }
 
-  
 }
