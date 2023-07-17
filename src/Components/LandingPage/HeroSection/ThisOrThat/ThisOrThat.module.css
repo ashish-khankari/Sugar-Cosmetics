@@ -22,3 +22,12 @@
     width: 45vw;
     border-radius: 15px;
 }
+
+@media only screen and (max-width: 780px){
+    .ThisOrThatImages{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

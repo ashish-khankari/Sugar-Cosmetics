@@ -27,9 +27,16 @@
     color: white;
   }
 
+  /* .images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+
   .card {
     box-shadow: 0 4px 8px 0 rgba(37, 21, 21, 0.2);
-    margin:  2rem;
+    margin-left:  4rem;
+    margin-top: 30px;
     text-align: center;
     font-family: arial;
     background-color: rgb(255, 255, 255);

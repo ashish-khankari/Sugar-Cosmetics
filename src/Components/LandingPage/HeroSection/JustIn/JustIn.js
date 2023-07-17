@@ -8,7 +8,6 @@ import Product from './JustInData';
 export default function JustIn() {
     const responsive = {
         superLargeDesktop: {
-            // the naming can be any, depends on you.
             breakpoint: { max: 4000, min: 3000 },
             items: 5
         },
@@ -142,9 +141,12 @@ export default function JustIn() {
             <div className={styles.heading}>
                 <h1 className={styles.text} >JUST IN</h1>
             </div>
-            <Carousel responsive={responsive} {...settings} >
-                {products}
-            </Carousel>;
+            <div className={styles.images}>
+                <Carousel responsive={responsive} {...settings} >
+                    {products}
+                </Carousel>;
+            </div>
+
 
         </div>
     )

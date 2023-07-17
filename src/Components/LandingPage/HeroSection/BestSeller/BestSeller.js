@@ -142,9 +142,12 @@ export default function Slider() {
             <div className={styles.heading}>
                 <h1 className={styles.text} >BEST SELLERS</h1>
             </div>
-            <Carousel responsive={responsive} {...settings} >
-                {products}
-            </Carousel>;
+            <div className='images'>
+                <Carousel responsive={responsive} {...settings} >
+                    {products}
+                </Carousel>;
+            </div>
+
 
         </div>
     )
