@@ -72,7 +72,7 @@ export default function Lips() {
       <div className={styles.innerContainer}>
         <div className={styles.pagePosition}>
           <div className={styles.homeIcon}>
-            <Link to={'/'}><AiFillHome className={styles.home}/></Link>
+            <Link to={'/'}><AiFillHome className={styles.home} /></Link>
             <p>/ Lips</p>
           </div>
           <div className={styles.buttons}>
