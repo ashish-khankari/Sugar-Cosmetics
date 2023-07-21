@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { addtoCart, addtoFavourites, getFoundationData, sortbyName, sortfromHightoLow, sortfromLowtoHigh } from '../../../store/slices/productSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './Foundation.module.css'
@@ -14,7 +14,9 @@ export default function Foundation() {
   const foundationData = useSelector(state => state.myProducts.foundationProducts)
   const cartData = useSelector(state => state.myProducts.cartProducts)
   const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
-  
+  const [filteredValues, setFilteredValues] = useState([])
+  const [showList, setShowList] = useState(false)
+
 
   useEffect(() => {
     dispatch(getFoundationData())
@@ -62,6 +64,22 @@ export default function Foundation() {
     dispatch(sortfromLowtoHigh())
   }
 
+  function filterData() {
+    // alert("Hello")
+    setFilteredValues(['Filter By Name', 'Prices from High to Low', 'Prices from Low to High'])
+    setShowList((prevShowFilter)=>!prevShowFilter)
+  }
+
+  function filtermyData(item) {
+    // alert(`${item}`)
+    if (item == "Filter By Name") {
+      dispatch(sortbyName())
+    } else if (item == "Prices from High to Low") {
+      dispatch(sortfromHightoLow())
+    } else {
+      dispatch(sortfromLowtoHigh())
+    }
+  }
   return (
     <div className={styles.container}>
       <img src='https://sugar-mobile-application.s3.amazonaws.com/collection-web-banner/Face.jpg' className={styles.titleImage} />
@@ -72,25 +90,17 @@ export default function Foundation() {
             <Link to={'/'}><AiFillHome className={styles.home} /></Link>
             <p>/ Foundation</p>
           </div>
-          <div className={styles.buttons}>
-            <div className={styles.radiobutton}>
-              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
-              <lable>Name</lable>
-            </div>
-
-            <div className={styles.radiobutton}>
-              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
-              <lable>Price - High to Low</lable>
-            </div>
-
-            <div className={styles.radiobutton}>
-              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
-              <lable>Price - Low to High</lable>
-            </div>
-
-          </div>
-          <div>
-
+          <div className={styles.filter}>
+            <button onClick={filterData} className={styles.filterButton}>Filter</button>
+            { showList &&
+              filteredValues.map((item) => {
+                return (
+                  <ul>
+                    <li onClick={() => filtermyData(item)}>{item}</li>
+                  </ul>
+                )
+              })
+            }
           </div>
         </div>
         <div className={styles.mappedData}>

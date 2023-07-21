@@ -44,3 +44,43 @@ function App() {
 }
 
 export default App;
+
+// import React, { useEffect, useState } from 'react';
+
+// export default function App() {
+//   const [timeDecrement, setTimeDecrement] = useState(30);
+//   const [timeIncrement, setTimeIncrement] = useState(0);
+
+//   useEffect(() => {
+//     const increseInterval = setTimeout(() => {
+//       if (timeIncrement === 30) {
+//         alert("Time's Up !!");
+//         clearTimeout(increseInterval);
+//       } else {
+//         setTimeIncrement(timeIncrement + 1);
+//       }
+//     }, 1000);
+//     return () => clearTimeout(increseInterval);
+//   }, [timeIncrement]);
+
+//   useEffect(() => {
+//     const decreseTime = setTimeout(() => {
+//       if (timeDecrement === 0) {
+//         alert("Time's Up!!");
+//         clearTimeout(decreseTime);
+//       }else{
+//         setTimeDecrement(timeDecrement - 1);
+
+//       }
+//     }, 1000);
+
+//     return () => clearTimeout(decreseTime);
+//   }, [timeDecrement]);
+
+//   return (
+//     <div>
+//       <p>IncreaseTime = {timeIncrement}</p>
+//       <p>DecreaseTime = {timeDecrement}</p>
+//     </div>
+//   );
+// }

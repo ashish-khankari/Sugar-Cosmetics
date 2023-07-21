@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Eyes.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { addtoCart, addtoFavourites, getEyesData, sortbyName, sortfromHightoLow, sortfromLowtoHigh } from '../../../store/slices/productSlice'
@@ -13,6 +13,8 @@ export default function Eyes() {
   const eyesData = useSelector(state => state.myProducts.eyesProduct)
   const cartData = useSelector(state => state.myProducts.cartProducts)
   const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
+  const [filteredValues, setFilteredValues] = useState([])
+  const [showList, setShowList] = useState(false)
 
   const showToastMessageforError = () => {
     toast.info('Product already addedto Cart !', {
@@ -48,18 +50,34 @@ export default function Eyes() {
 
   }
 
-  function sortAlphabetically() {
-    dispatch(sortbyName())
+  // function sortAlphabetically() {
+  //   dispatch(sortbyName())
+  // }
+
+  // function sortHightoLow() {
+  //   dispatch(sortfromHightoLow())
+  // }
+
+  // function sortLowtoHigh() {
+  //   dispatch(sortfromLowtoHigh())
+  // }
+
+  function filterData() {
+    // alert("Hello")
+    setFilteredValues(['Filter By Name', 'Prices from High to Low', 'Prices from Low to High'])
+    setShowList((prevShowFilter)=>!prevShowFilter)
   }
 
-  function sortHightoLow() {
-    dispatch(sortfromHightoLow())
+  function filtermyData(item) {
+    // alert(`${item}`)
+    if (item == "Filter By Name") {
+      dispatch(sortbyName())
+    } else if (item == "Prices from High to Low") {
+      dispatch(sortfromHightoLow())
+    } else {
+      dispatch(sortfromLowtoHigh())
+    }
   }
-
-  function sortLowtoHigh() {
-    dispatch(sortfromLowtoHigh())
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
@@ -68,7 +86,7 @@ export default function Eyes() {
             <Link to={'/'}><AiFillHome className={styles.home} /></Link>
             <p>/ Eyes</p>
           </div>
-          <div className={styles.buttons}>
+          {/* <div className={styles.buttons}>
             <div className={styles.radiobutton}>
               <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
               <lable>Name</lable>
@@ -84,6 +102,19 @@ export default function Eyes() {
               <lable>Price - Low to High</lable>
             </div>
 
+          </div> */}
+
+          <div className={styles.filter}>
+            <button onClick={filterData} className={styles.filterButton}>Filter</button>
+            { showList &&
+              filteredValues.map((item) => {
+                return (
+                  <ul>
+                    <li onClick={() => filtermyData(item)}>{item}</li>
+                  </ul>
+                )
+              })
+            }
           </div>
         </div>
         <div className={styles.mappedData}>

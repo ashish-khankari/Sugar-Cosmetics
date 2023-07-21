@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addtoCart, getBlushData, addtoFavourites, sortfromHightoLow, sortfromLowtoHigh, sortbyName } from '../../../store/slices/productSlice'
 import styles from './Brushes.module.css'
@@ -14,8 +14,8 @@ export default function Brushes() {
   const blushProducts = useSelector(state => state.myProducts.blushProduct)
   const cartProductsData = useSelector(state => state.myProducts.cartProducts)
   const selectBookmarkedProduct = useSelector(state => state.myProducts.bookMarkedProducts)
-
-  console.log(blushProducts)
+  const [filteredValues, setFilteredValues] = useState([])
+  const [showList, setShowList] = useState(false)
 
   const showToastMessageforError = () => {
     toast.info('Product already addedto Cart !', {
@@ -65,6 +65,23 @@ export default function Brushes() {
     dispatch(sortfromLowtoHigh())
   }
 
+  function filterData() {
+    // alert("Hello")
+    setFilteredValues(['Filter By Name', 'Prices from High to Low', 'Prices from Low to High'])
+    setShowList((prevShowFilter)=>!prevShowFilter)
+  }
+
+
+  function filtermyData(item) {
+    // alert(`${item}`)
+    if (item == "Filter By Name") {
+      dispatch(sortbyName())
+    } else if (item == "Prices from High to Low") {
+      dispatch(sortfromHightoLow())
+    } else {
+      dispatch(sortfromLowtoHigh())
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -74,22 +91,17 @@ export default function Brushes() {
             <Link to={'/'}><AiFillHome className={styles.home} /></Link>
             <p>/ Brushes</p>
           </div>
-          <div className={styles.buttons}>
-            <div className={styles.radiobutton}>
-              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortAlphabetically} />
-              <lable>Name</lable>
-            </div>
-
-            <div className={styles.radiobutton}>
-              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortHightoLow} />
-              <lable>Price - High to Low</lable>
-            </div>
-
-            <div className={styles.radiobutton}>
-              <input type="radio" id="html" name="fav_language" value="HTML" onClick={sortLowtoHigh} />
-              <lable>Price - Low to High</lable>
-            </div>
-
+          <div className={styles.filter}>
+            <button onClick={filterData} className={styles.filterButton}>Filter</button>
+            {showList &&
+              filteredValues.map((item) => {
+                return (
+                  <ul>
+                    <li onClick={() => filtermyData(item)}>{item}</li>
+                  </ul>
+                )
+              })
+            }
           </div>
         </div>
         <div className={styles.mappedData}>
